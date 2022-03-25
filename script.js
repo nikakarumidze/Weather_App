@@ -12,7 +12,7 @@ window.onload = () => {
             switchMetrics.checked = true;
         }
         
-    currentLocation();
+    // currentLocation();
     
     if (localStorage.getItem("locations") !== null){
         for (x of JSON.parse(localStorage.getItem("locations"))) {
