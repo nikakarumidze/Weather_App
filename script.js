@@ -18,7 +18,7 @@ window.onload = () => {
         for (x of JSON.parse(localStorage.getItem("locations"))) {
             addLocations(x)
             getCity(x)
-            .then(data => {HereIam = `${data.EnglishName}, ${data.Country.EnglishName}`; console.log(data); console.log(HereIam); return getWeather(data.Key)})
+            .then(data => {getWeather(data.Key)})
             .then(data => UpdateUI(data, x))
         }
     }
