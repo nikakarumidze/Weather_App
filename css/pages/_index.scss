@@ -1,0 +1,136 @@
+.form-select {
+    width: 7%;
+}
+.toggle-container {
+    input[type=checkbox] { /* styling for input element */
+        height: 0;
+        width: 0;
+        visibility: hidden;
+    }
+    label { /* styling for labels */
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 52px;
+        height: 27px;
+        background: #1ba80e;
+        border-radius: 100px;
+        border: 1px white solid;
+        position: relative;
+    }
+    
+    label:after { /* styling for labels - on toggle */
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 20px;
+        height: 20px;
+        background: #fff;
+        border-radius: 90px;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+    }
+    
+    input:checked + label { /* conditional check while toggling */
+        background: var(--color-heading);
+    }
+    
+    input:checked + label:after {
+        left: calc(100% - 5px);
+        -webkit-transform: translateX(-100%);
+                transform: translateX(-100%);
+    }
+    
+    label:active:after {
+        width: 45px;
+    }
+}
+
+main div div {
+    height: 250px;
+    @include before-tablet {
+        height: 280px;
+    }
+    
+
+    .carousel-inner {
+        padding: 0 40px;
+
+            h1 {
+            font-size: 40px;
+            }
+            p {
+            font-size: 18px;
+            }
+
+        @include before-tablet {
+            padding: 0 70px;
+            h1 {
+                font-size: 64px;
+            }
+            p {
+                font-size: 28px;
+            }
+        }
+    }
+
+
+    .carousel-indicators button{
+        width: 10px !important;
+        height: 10px !important;
+        border-radius: 100% !important;
+    }
+
+    
+}
+
+#carouselSecond, #carouselThird {
+    .carousel-inner {
+        .row {
+            .col, .col div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .col {
+                padding: 18px;
+                .img-fluid {
+                    opacity: 0.5;
+                    width: 40%
+                }
+                :first-child, :nth-child(3) {
+                    font-size: 0.8rem;
+                    font-weight: bold;
+                }
+                :nth-child(4) {
+                    font-size: 0.6rem;
+                    color: rgb(196, 196, 196);
+                    margin: 5% 0 2.5rem
+                }
+            }
+        }
+    }
+}
+
+.delete {
+    cursor: pointer;
+}
+
+#search {
+    input::-webkit-calendar-picker-indicator {
+        display: none !important;
+      }
+}
+
+#weather_content_1 {
+    .carousel-item {
+            h1, img {
+                margin-top: 15px;
+            }
+            p {
+                margin-top: 110px;
+            }
+        
+    }
+}
