@@ -138,7 +138,6 @@ switchMetrics.addEventListener("change", () => {
 })
 
 // Add Location
-var addBtnText = document.querySelector("#add");
 const locations = document.querySelector("#locations");
 const searchBar = document.querySelector("#search");
 
