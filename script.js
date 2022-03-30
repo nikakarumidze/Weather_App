@@ -3,9 +3,6 @@ window.onload = () => {
         if (theme === "dark") {
             darkTheme()
         }
-        // getCity("tbilisi")
-        // .then(e => console.log(e))
-        // .catch(err => console.log(err))
 
     let metric = localStorage.getItem("metric");
         if (metric === "F") {
@@ -67,6 +64,9 @@ function UpdateUI (data, location) {
     <img src="AccuWeather_Icons/0${data[0].WeatherIcon}-s.png">
     `;
     weatherContent.appendChild(newDiv);
+
+    // var newbutton = document.createElement("button");
+    // document.querySelector(".carousel-indicators")
 }
 
 // Get Cities
@@ -189,7 +189,7 @@ locations.addEventListener("click", e => {
 })
 
 // Weather Information
-const weatherKey = "UbyTBODoaVjtkzygq8pP5YNTD6zwUVuo";
+const weatherKey = "UsuAZ3eMlHEmkT98G0SD8wUHvb1UwYjA";
 
 const getWeather = async id => {
     const linkk = `http://dataservice.accuweather.com/currentconditions/v1/${id}?apikey=${weatherKey}`;

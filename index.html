@@ -11,18 +11,38 @@
     <title>Weather App</title>
 </head>
 <body class="bg-light">
-    <!-- Switching Modes -->
-    <div class="toggle-container m-3 text-dark">
-        <span>Light Mode</span>
-        <input type="checkbox" id="switch" name="theme" /><label for="switch">Toggle</label>
-        <span>Dark Mode</span>
-    </div>
-    <!-- Switching Metrics -->
-    <div class="toggle-container m-3 text-dark">
-        <span>Celsius</span>
-        <input type="checkbox" id="switchMetrics" name="metrics" /><label for="switchMetrics">Toggle</label>
-        <span>Farenheit</span>
-    </div>
+<!-- Switching Modes -->
+<div class="toggle-container m-3 text-dark">
+    <span>Light Mode</span>
+    <input type="checkbox" id="switch" name="theme" /><label for="switch">Toggle</label>
+    <span>Dark Mode</span>
+</div>
+<!-- Switching Metrics -->
+<div class="toggle-container m-3 text-dark">
+    <span>Celsius</span>
+    <input type="checkbox" id="switchMetrics" name="metrics" /><label for="switchMetrics">Toggle</label>
+    <span>Farenheit</span>
+</div>
+<!-- Edit Locations -->
+<div class="col-lg-4 text-dark">
+    <header class="text-center my-4">
+        <h2 class="mb-4 text-dark">Location List</h2>
+        <form class="search" id="search">
+        <input list="array_locations" class="form-control m-auto w-50" type="text" name="search_add" placeholder="Search location" />
+        <datalist id="array_locations">
+        </datalist>
+        </form>
+    </header>
+    <ul class="list-group locations mx-auto w-50 mb-5" id="locations">
+        <li class="list-group-item d-flex justify-content-between align-items-center first-one">
+            <span>Current Location</span>
+            <div>
+                <i class=""></i>
+            </div>
+        </li>
+    </ul>
+</div>
+
 <!-- Main Content -->
 <main class="container text-dark">
     <div class="col-lg-8 m-auto">
@@ -216,25 +236,7 @@
     </div>
 </main>
 
-<div class="col-lg-4 text-dark">
-    <header class="text-center my-4">
-      <h2 class="mb-4 text-dark">Location List</h2>
-      <form class="search" id="search">
-        <input list="array_locations" class="form-control m-auto w-50" type="text" name="search_add" placeholder="Search location" />
-        <datalist id="array_locations">
-        </datalist>
-      </form>
-    </header>
 
-    <ul class="list-group locations mx-auto w-50 mb-5" id="locations">
-        <li class="list-group-item d-flex justify-content-between align-items-center first-one">
-            <span>Current Location</span>
-            <div>
-                <i class=""></i>
-            </div>
-        </li>
-    </ul>
-</div>
 
 
 <script src="script.js"></script>
