@@ -12,11 +12,11 @@ window.onload = () => {
     currentLocation();
     
     if (localStorage.getItem("locations") !== null){
-        for (x of JSON.parse(localStorage.getItem("locations"))) {
-            addLocations(x)
+        for (let x of JSON.parse(localStorage.getItem("locations"))) {
+            addLocations(x);
             getCity(x)
-            .then(data => {getWeather(data.Key)})
-            .then(data => UpdateUI(data, x))
+            .then(data => getWeather(data.Key))
+            .then(data => UpdateUI(data,x))
         }
     }
     getAllCities();
@@ -33,14 +33,14 @@ const currentLocation = () => {
         fetch(`http://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${weatherKey}&q=${response}`)
         .then(e => e.json())
         .then(data => {HereIam = `${data.EnglishName}, ${data.Country.EnglishName}`; return getWeather(data.Key);})
-        .then(data => UpdateUI(data, HereIam))
+        .then(data => UpdateUI(data, HereIam, "active", "true"))
     })
 }
 
 var metricScore;
 
 const weatherContent = document.querySelector("#weather_content_1");
-function UpdateUI (data, location) {
+function UpdateUI (data, location, active, activeTrue) {
     for (x of weatherContent.children) {
         x.classList.remove("active")
     }
@@ -65,8 +65,15 @@ function UpdateUI (data, location) {
     `;
     weatherContent.appendChild(newDiv);
 
-    // var newbutton = document.createElement("button");
-    // document.querySelector(".carousel-indicators")
+    var newbutton = document.createElement("button");
+    newbutton.setAttribute("type", "button");
+    newbutton.setAttribute("data-bs-target", "#carouselFirst");
+    newbutton.setAttribute("data-bs-slide-to", weatherContent.childElementCount);
+    if (active !== undefined) {
+        newbutton.setAttribute("aria-current", `${activeTrue}`);
+        newbutton.setAttribute("class", `${active}`);
+    }
+    document.querySelector("#carouselFirst .carousel-indicators").appendChild(newbutton);
 }
 
 // Get Cities
@@ -172,8 +179,7 @@ searchBar.addEventListener("submit", e => {
                 }
             })
             localStorage.setItem("locations", JSON.stringify(localArr));})
-        .catch(err => console.log(err))
-        .then(e => searchBar.reset())
+        .then(() => searchBar.reset())
         ;
         }
 })
@@ -205,3 +211,45 @@ const getCity = async city => {
     const responsejson = await responseApi.json();
     return responsejson[0];
 }
+
+// Next Button on First Carousel
+document.querySelector("#carouselFirst .carousel-control-next").addEventListener("click", e => {
+    // Finds Where we are now
+    let carouselRowNum = document.querySelector("#carouselFirst .carousel-indicators .active").getAttribute("data-bs-slide-to");
+
+    // Removes all active Classes needed
+    for (x of weatherContent.children) {
+        x.classList.remove("active")
+    }
+    document.querySelector("#carouselFirst .carousel-indicators .active").classList.remove("active");
+
+    // Change Slide
+    if (carouselRowNum < document.querySelector("#carouselFirst .carousel-indicators").childElementCount) {
+        weatherContent.children.item(carouselRowNum).classList.add("active");
+        document.querySelector("#carouselFirst .carousel-indicators").children.item(carouselRowNum).classList.add("active");
+    } else {
+        weatherContent.children.item(0).classList.add("active");
+        document.querySelector("#carouselFirst .carousel-indicators").children.item(0).classList.add("active");
+       
+    }
+} )
+
+// Same Operation But On Previous Button
+document.querySelector("#carouselFirst .carousel-control-prev").addEventListener("click", e => {
+    let carouselRowNum = document.querySelector("#carouselFirst .carousel-indicators .active").getAttribute("data-bs-slide-to");
+
+    for (x of weatherContent.children) {
+        x.classList.remove("active")
+    }
+    document.querySelector("#carouselFirst .carousel-indicators .active").classList.remove("active");
+
+    if (carouselRowNum < 2) {
+        weatherContent.children.item(weatherContent.children.length-1).classList.add("active");
+        document.querySelector("#carouselFirst .carousel-indicators").children.item(document.querySelector("#carouselFirst .carousel-indicators").children.length-1).classList.add("active");
+        
+    } else {
+        weatherContent.children.item(carouselRowNum-2).classList.add("active");
+        document.querySelector("#carouselFirst .carousel-indicators").children.item(carouselRowNum-2).classList.add("active");
+       
+    }
+} )
