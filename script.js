@@ -45,7 +45,7 @@ function UpdateUI (data, location, active, activeTrue) {
         x.classList.remove("active")
     }
     let metricScore = localStorage.getItem("metric") == "C" ? data[0].Temperature.Metric.Value : data[0].Temperature.Imperial.Value;
-
+    
     var textColor = "text-dark";
     if(window.localStorage.getItem("theme") === "dark"){textColor = "text-light"};
 
@@ -65,6 +65,9 @@ function UpdateUI (data, location, active, activeTrue) {
     newbutton.setAttribute("data-bs-target", "#carouselFirst");
     newbutton.setAttribute("data-bs-slide-to", weatherContent.childElementCount);
     if (active !== undefined) {
+        if (document.querySelector("#carouselFirst .carousel-indicators .active") !== null){
+            document.querySelector("#carouselFirst .carousel-indicators .active").classList.remove("active");
+        }
         newbutton.setAttribute("aria-current", `${activeTrue}`);
         newbutton.setAttribute("class", `${active}`);
     }
@@ -165,7 +168,7 @@ searchBar.addEventListener("submit", e => {
         getCity(searchBar.search_add.value.trim())
         .then(data => {addLocations(`${data.EnglishName}, ${data.Country.EnglishName}`); return getWeather(data.Key)})
         .then(data => {
-            UpdateUI(data, locations.lastChild.firstChild.nextSibling.innerHTML);
+            UpdateUI(data, locations.lastChild.firstChild.nextSibling.innerHTML, "active", "true");
             var saveLocations = document.querySelectorAll(".locations span");
             localArr =[];
             saveLocations.forEach((e, index) => {
@@ -182,14 +185,25 @@ searchBar.addEventListener("submit", e => {
 // Delete Location
 locations.addEventListener("click", e => {
     if(e.target.classList.contains("fa-trash-alt")){
-        // Remove From Local Storage
         var filterThis = e.target.parentElement.previousElementSibling.innerHTML;
+        
+        // Remove From Carousel
+        document.querySelectorAll("#weather_content_1 div div p").forEach(e => {
+            if(e.innerHTML.trim() == filterThis.trim()) {
+                if ( e.parentElement.parentElement.classList.contains("active")){
+                    e.parentElement.parentElement.nextSibling.classList.add("active");
+                    document.querySelector("#carouselFirst .carousel-indicators .active").nextSibling.classList.add("active");
+                }
+                e.parentElement.parentElement.remove();
+                document.querySelector("#carouselFirst .carousel-indicators .active").remove();
+            }
+        })
+
+        // Remove From Local Storage
         var filtered = JSON.parse(localStorage.getItem("locations")).filter(e => e !== filterThis);
         localStorage.setItem("locations", JSON.stringify(filtered));
         // Remove Element
         e.target.parentElement.parentElement.remove();
-        // Remove From Carousel
-        
     }
 })
 
