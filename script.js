@@ -37,20 +37,15 @@ const currentLocation = () => {
     })
 }
 
-var metricScore;
+
 
 const weatherContent = document.querySelector("#weather_content_1");
 function UpdateUI (data, location, active, activeTrue) {
     for (x of weatherContent.children) {
         x.classList.remove("active")
     }
-    if (localStorage.getItem("metric") == "C") {
-        metricScore = data[0].Temperature.Metric.Value;
-    }
-    else if (localStorage.getItem("metric") == "F") {
-        metricScore = data[0].Temperature.Imperial.Value;
-    }
-    
+    let metricScore = localStorage.getItem("metric") == "C" ? data[0].Temperature.Metric.Value : data[0].Temperature.Imperial.Value;
+
     var textColor = "text-dark";
     if(window.localStorage.getItem("theme") === "dark"){textColor = "text-light"};
 
@@ -61,7 +56,7 @@ function UpdateUI (data, location, active, activeTrue) {
         <h1 class="CtoF">&deg;<span>${metricScore}</span></h1>
         <p> ${location} </p>
     </div>
-    <img src="AccuWeather_Icons/0${data[0].WeatherIcon}-s.png">
+    <img src="icons/${data[0].WeatherIcon}.svg">
     `;
     weatherContent.appendChild(newDiv);
 
@@ -187,10 +182,14 @@ searchBar.addEventListener("submit", e => {
 // Delete Location
 locations.addEventListener("click", e => {
     if(e.target.classList.contains("fa-trash-alt")){
-        e.target.parentElement.parentElement.remove();
+        // Remove From Local Storage
         var filterThis = e.target.parentElement.previousElementSibling.innerHTML;
         var filtered = JSON.parse(localStorage.getItem("locations")).filter(e => e !== filterThis);
         localStorage.setItem("locations", JSON.stringify(filtered));
+        // Remove Element
+        e.target.parentElement.parentElement.remove();
+        // Remove From Carousel
+        
     }
 })
 
