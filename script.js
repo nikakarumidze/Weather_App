@@ -44,8 +44,9 @@ function UpdateUI (data, location, active, activeTrue) {
     for (x of weatherContent.children) {
         x.classList.remove("active")
     }
-    let metricScore = localStorage.getItem("metric") == "C" ? data[0].Temperature.Metric.Value : data[0].Temperature.Imperial.Value;
-    
+    let metricScore;
+    if(localStorage.getItem("metric") == "F") {metricScore = data[0].Temperature.Imperial.Value}
+    else {metricScore = data[0].Temperature.Metric.Value}
     var textColor = "text-dark";
     if(window.localStorage.getItem("theme") === "dark"){textColor = "text-light"};
 
@@ -64,7 +65,7 @@ function UpdateUI (data, location, active, activeTrue) {
     newbutton.setAttribute("type", "button");
     newbutton.setAttribute("data-bs-target", "#carouselFirst");
     newbutton.setAttribute("data-bs-slide-to", weatherContent.childElementCount);
-    if (active !== undefined) {
+    if (active == "active") {
         if (document.querySelector("#carouselFirst .carousel-indicators .active") !== null){
             document.querySelector("#carouselFirst .carousel-indicators .active").classList.remove("active");
         }
@@ -190,12 +191,24 @@ locations.addEventListener("click", e => {
         // Remove From Carousel
         document.querySelectorAll("#weather_content_1 div div p").forEach(e => {
             if(e.innerHTML.trim() == filterThis.trim()) {
-                if ( e.parentElement.parentElement.classList.contains("active")){
-                    e.parentElement.parentElement.nextSibling.classList.add("active");
-                    document.querySelector("#carouselFirst .carousel-indicators .active").nextSibling.classList.add("active");
+                // Removing active elements
+                if ( e.parentElement.parentElement.classList.contains("active")){ 
+                    // Case to avoid when element has not next sibling, we use previous one
+                    if (e.parentElement.parentElement.nextSibling !== null) {
+                        e.parentElement.parentElement.nextSibling.classList.add("active");
+                    } else {
+                        e.parentElement.parentElement.previousSibling.classList.add("active");
+                    }
                 }
+                let removeTarget = document.querySelector("#carouselFirst .carousel-indicators .active"); 
+                let targetButton = document.querySelector("#carouselFirst .carousel-indicators");
+                // while removing first child, class "active" does not change
+                if (!targetButton.firstElementChild.classList.contains("active")) {
+                    removeTarget.previousSibling.classList.add("active");
+                    removeTarget.classList.remove("active");
+                }
+                targetButton.lastChild.remove();
                 e.parentElement.parentElement.remove();
-                document.querySelector("#carouselFirst .carousel-indicators .active").remove();
             }
         })
 
