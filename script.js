@@ -246,7 +246,7 @@ locations.addEventListener("click", e => {
 const weatherKey = "UsuAZ3eMlHEmkT98G0SD8wUHvb1UwYjA";
 
 const getWeather = async id => {
-    const linkk = `http://dataservice.accuweather.com/currentconditions/v1/${id}?apikey=${weatherKey}`;
+    const linkk = `https://dataservice.accuweather.com/currentconditions/v1/${id}?apikey=${weatherKey}`;
     const response = await fetch(linkk);
     const data = await response.json();
     return data;
@@ -254,7 +254,7 @@ const getWeather = async id => {
 
 // Getting Weather forecast - 1 day
 const dailyWeather = async dataKey => {
-    const hourlyLink = `http://dataservice.accuweather.com/forecasts/v1/daily/1day/${dataKey}?apikey=${weatherKey}`;
+    const hourlyLink = `https://dataservice.accuweather.com/forecasts/v1/daily/1day/${dataKey}?apikey=${weatherKey}`;
     const hourlyResponse = await fetch(hourlyLink);
     const hourlyData = await hourlyResponse.json();
     return hourlyData;
@@ -262,7 +262,7 @@ const dailyWeather = async dataKey => {
 
 // City Information
 const getCity = async city => {
-    const baseplusApiKey = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${weatherKey}&q=${city}`;
+    const baseplusApiKey = `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${weatherKey}&q=${city}`;
     const responseApi = await fetch(baseplusApiKey);
     const responsejson = await responseApi.json();
     return responsejson[0];
@@ -278,15 +278,17 @@ document.querySelector("#carouselFirst .carousel-control-next").addEventListener
         x.classList.remove("active")
     }
     document.querySelector("#carouselFirst .carousel-indicators .active").classList.remove("active");
+    document.querySelector("#carousel_second_content .active").classList.remove("active");
 
     // Change Slide
     if (carouselRowNum < document.querySelector("#carouselFirst .carousel-indicators").childElementCount) {
         weatherContent.children.item(carouselRowNum).classList.add("active");
         document.querySelector("#carouselFirst .carousel-indicators").children.item(carouselRowNum).classList.add("active");
+        secondCarousel.children.item(carouselRowNum).classList.add("active");
     } else {
         weatherContent.children.item(0).classList.add("active");
         document.querySelector("#carouselFirst .carousel-indicators").children.item(0).classList.add("active");
-       
+        secondCarousel.children.item(0).classList.add("active");
     }
 } )
 
@@ -298,15 +300,16 @@ document.querySelector("#carouselFirst .carousel-control-prev").addEventListener
         x.classList.remove("active")
     }
     document.querySelector("#carouselFirst .carousel-indicators .active").classList.remove("active");
+    document.querySelector("#carousel_second_content .active").classList.remove("active");
 
     if (carouselRowNum < 2) {
         weatherContent.children.item(weatherContent.children.length-1).classList.add("active");
         document.querySelector("#carouselFirst .carousel-indicators").children.item(document.querySelector("#carouselFirst .carousel-indicators").children.length-1).classList.add("active");
-        
+        secondCarousel.children.item(weatherContent.children.length-1).classList.add("active");
     } else {
         weatherContent.children.item(carouselRowNum-2).classList.add("active");
         document.querySelector("#carouselFirst .carousel-indicators").children.item(carouselRowNum-2).classList.add("active");
-       
+       secondCarousel.children.item(carouselRowNum-2).classList.add("active");
     }
 } )
 
