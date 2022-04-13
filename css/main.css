@@ -50,80 +50,32 @@
   width: 45px;
 }
 
-main div div {
-  height: 250px;
+#carouselFirst, #carousel_second_head {
+  height: 300px;
 }
 
 @media (min-width: 576px) {
-  main div div {
+  #carouselFirst, #carousel_second_head {
     height: 280px;
   }
 }
 
-main div div .carousel-inner {
-  padding: 0 40px;
-}
-
-main div div .carousel-inner h1 {
-  font-size: 40px;
-}
-
-main div div .carousel-inner p {
-  font-size: 18px;
-}
-
-@media (min-width: 576px) {
-  main div div .carousel-inner {
-    padding: 0 70px;
-  }
-  main div div .carousel-inner h1 {
-    font-size: 64px;
-  }
-  main div div .carousel-inner p {
-    font-size: 28px;
-  }
-}
-
-main div div .carousel-indicators button {
+#carouselFirst .carousel-indicators button, #carousel_second_head .carousel-indicators button {
   width: 10px !important;
   height: 10px !important;
   border-radius: 100% !important;
 }
 
-#carouselSecond .carousel-inner .row .col, #carouselSecond .carousel-inner .row .col div, #carouselThird .carousel-inner .row .col, #carouselThird .carousel-inner .row .col div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+#carousel_second_content {
+  height: 100%;
 }
 
-#carouselSecond .carousel-inner .row .col, #carouselThird .carousel-inner .row .col {
-  padding: 18px;
+#carousel_second_content .carousel-item {
+  height: 100%;
 }
 
-#carouselSecond .carousel-inner .row .col .img-fluid, #carouselThird .carousel-inner .row .col .img-fluid {
-  opacity: 0.5;
-  width: 40%;
-}
-
-#carouselSecond .carousel-inner .row .col :first-child, #carouselSecond .carousel-inner .row .col :nth-child(3), #carouselThird .carousel-inner .row .col :first-child, #carouselThird .carousel-inner .row .col :nth-child(3) {
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
-#carouselSecond .carousel-inner .row .col :nth-child(4), #carouselThird .carousel-inner .row .col :nth-child(4) {
-  font-size: 0.6rem;
-  color: #c4c4c4;
-  margin: 5% 0 2.5rem;
+#carousel_second_content .carousel-item div {
+  text-align: center;
 }
 
 .delete {
@@ -134,11 +86,64 @@ main div div .carousel-indicators button {
   display: none !important;
 }
 
-#weather_content_1 .carousel-item h1, #weather_content_1 .carousel-item img {
+#weather_content_1 {
+  height: 100%;
+  padding: 0 40px;
+}
+
+#weather_content_1 h1 {
+  font-size: 40px;
+}
+
+#weather_content_1 p {
+  font-size: 18px;
+}
+
+@media (min-width: 576px) {
+  #weather_content_1 {
+    padding: 0 70px;
+  }
+  #weather_content_1 h1 {
+    font-size: 64px;
+  }
+  #weather_content_1 p {
+    font-size: 28px;
+  }
+}
+
+#weather_content_1 .carousel-item {
+  height: 100%;
+}
+
+#weather_content_1 .carousel-item h1 {
   margin-top: 15px;
+  font-size: 48px;
+}
+
+@media (min-width: 576px) {
+  #weather_content_1 .carousel-item h1 {
+    font-size: 40px;
+  }
+}
+
+#weather_content_1 .carousel-item img {
+  width: 150px;
+  margin-top: 40px;
+}
+
+@media (min-width: 576px) {
+  #weather_content_1 .carousel-item img {
+    margin-top: 15px;
+  }
 }
 
 #weather_content_1 .carousel-item p {
-  margin-top: 110px;
+  margin-top: 150px;
+}
+
+@media (min-width: 576px) {
+  #weather_content_1 .carousel-item p {
+    margin-top: 110px;
+  }
 }
 /*# sourceMappingURL=main.css.map */

@@ -46,35 +46,11 @@
     }
 }
 
-main div div {
-    height: 250px;
+#carouselFirst, #carousel_second_head {
+    height: 300px;
     @include before-tablet {
         height: 280px;
     }
-    
-
-    .carousel-inner {
-        padding: 0 40px;
-
-            h1 {
-            font-size: 40px;
-            }
-            p {
-            font-size: 18px;
-            }
-
-        @include before-tablet {
-            padding: 0 70px;
-            h1 {
-                font-size: 64px;
-            }
-            p {
-                font-size: 28px;
-            }
-        }
-    }
-
-
     .carousel-indicators button{
         width: 10px !important;
         height: 10px !important;
@@ -84,31 +60,12 @@ main div div {
     
 }
 
-#carouselSecond, #carouselThird {
-    .carousel-inner {
-        .row {
-            .col, .col div {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-            .col {
-                padding: 18px;
-                .img-fluid {
-                    opacity: 0.5;
-                    width: 40%
-                }
-                :first-child, :nth-child(3) {
-                    font-size: 0.8rem;
-                    font-weight: bold;
-                }
-                :nth-child(4) {
-                    font-size: 0.6rem;
-                    color: rgb(196, 196, 196);
-                    margin: 5% 0 2.5rem
-                }
-            }
+#carousel_second_content {
+    height: 100%;
+    .carousel-item {
+        height: 100%;
+        div {
+            text-align: center;
         }
     }
 }
@@ -124,12 +81,48 @@ main div div {
 }
 
 #weather_content_1 {
+    height: 100%;
+    
+    padding: 0 40px;
+
+        h1 {
+        font-size: 40px;
+        }
+        p {
+        font-size: 18px;
+        }
+
+    @include before-tablet {
+        padding: 0 70px;
+        h1 {
+            font-size: 64px;
+        }
+        p {
+            font-size: 28px;
+        }
+    }
+    
     .carousel-item {
-            h1, img {
+        height: 100%;
+            h1 {
                 margin-top: 15px;
+                font-size: 48px;
+                @include before-tablet {
+                    font-size: 40px; 
+                }
+            }
+            img {
+                width: 150px;
+                margin-top: 40px;
+                @include before-tablet {
+                    margin-top: 15px;
+                }
             }
             p {
-                margin-top: 110px;
+                @include before-tablet{
+                    margin-top: 110px; 
+                }
+                margin-top: 150px;
             }
         
     }

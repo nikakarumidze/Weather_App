@@ -23,25 +23,6 @@
     <input type="checkbox" id="switchMetrics" name="metrics" /><label for="switchMetrics">Toggle</label>
     <span>Farenheit</span>
 </div>
-<!-- Edit Locations -->
-<div class="col-lg-4 text-dark">
-    <header class="text-center my-4">
-        <h2 class="mb-4 text-dark">Location List</h2>
-        <form class="search" id="search">
-        <input list="array_locations" class="form-control m-auto w-50" type="text" name="search_add" placeholder="Search location" />
-        <datalist id="array_locations">
-        </datalist>
-        </form>
-    </header>
-    <ul class="list-group locations mx-auto w-50 mb-5" id="locations">
-        <li class="list-group-item d-flex justify-content-between align-items-center first-one">
-            <span>Current Location</span>
-            <div>
-                <i class=""></i>
-            </div>
-        </li>
-    </ul>
-</div>
 
 <!-- Main Content -->
 <main class="container text-dark">
@@ -66,175 +47,31 @@
         </div>
 
 
-        <div class="my-3 carousel carousel slide rounded bg-primary" id="carouselSecond">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col">
-                            <div> 21&deg; </div>
-                            <div class="img-fluid">
-                                <img src="https://img.icons8.com/ios/100/000000/sun.png" alt="">
-                            </div>
-                            <div>12:00</div>
-                            <div> PM </div>
-                        </div>
 
-                        <div class="col">
-                            <div class="">
-                                21&deg;
-                            </div>
-                            <div class="img-fluid">
-                                <img src="https://img.icons8.com/ios/100/000000/sun.png" alt="">
-                            </div>
-                            <div class="">
-                                12:00
-                            </div>
-                            <div class="">
-                                PM
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="">
-                                21&deg;
-                            </div>
-                            <div class="img-fluid">
-                                <img src="https://img.icons8.com/ios/100/000000/sun.png" alt="">
-                            </div>
-                            <div class="">
-                                12:00
-                            </div>
-                            <div class="">
-                                PM
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="">
-                                21&deg;
-                            </div>
-                            <div class="img-fluid">
-                                <img src="https://img.icons8.com/ios/100/000000/sun.png" alt="">
-                            </div>
-                            <div class="">
-                                12:00
-                            </div>
-                            <div class="">
-                                PM
-                            </div>
-                        </div>
-                        
-                        <div class="col">
-                            <div class="">
-                                21&deg;
-                            </div>
-                            <div class="img-fluid">
-                                <img src="https://img.icons8.com/ios/100/000000/sun.png" alt="">
-                            </div>
-                            <div class="">
-                                12:00
-                            </div>
-                            <div class="">
-                                PM
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselSecond" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselSecond" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-
-            <div class="carousel-indicators align-items-end my-0">
-                <button type="button" data-bs-target="#carouselSecond" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselSecond" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselSecond" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-        </div>
-
-        <div class="my-3 carousel carousel slide rounded bg-primary" id="carouselThird">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col">
-                            <div> 21&deg; </div>
-                            <div class="img-fluid">
-                                <img src="https://img.icons8.com/ios/100/000000/sun.png" alt="">
-                            </div>
-                            <div> Sun </div>
-                        </div>
-
-                        <div class="col">
-                            <div>21&deg;</div>
-                            <div class="img-fluid">
-                                <img src="https://img.icons8.com/ios/100/000000/sun.png" alt="">
-                            </div>
-                            <div>Mon</div>
-                        </div>
-
-                        <div class="col">
-                            <div class="">
-                                21&deg;
-                            </div>
-                            <div class="img-fluid">
-                                <img src="https://img.icons8.com/ios/100/000000/sun.png" alt="">
-                            </div>
-                            <div class="">
-                                Tue
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="">
-                                21&deg;
-                            </div>
-                            <div class="img-fluid">
-                                <img src="https://img.icons8.com/ios/100/000000/sun.png" alt="">
-                            </div>
-                            <div class="">
-                                Wed
-                            </div>
-                        </div>
-                        
-                        <div class="col">
-                            <div class="">
-                                21&deg;
-                            </div>
-                            <div class="img-fluid">
-                                <img src="https://img.icons8.com/ios/100/000000/sun.png" alt="">
-                            </div>
-                            <div class="">
-                                Thur
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselThird" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselThird" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-
-            <div class="carousel-indicators align-items-end my-0">
-                <button type="button" data-bs-target="#carouselThird" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselThird" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselThird" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <div class="my-3 carousel rounded bg-primary" id="carousel_second_head">
+            <div class="carousel-inner text-dark" id="carousel_second_content">
+                <!-- JS Displays Daily Content Here -->
             </div>
         </div>
     </div>
 </main>
 
+<!-- Edit Locations -->
+<div class="col-lg-4 text-dark">
+    <header class="text-center my-4">
+        <h2 class="mb-4 text-dark">Location List</h2>
+        <form class="search" id="search">
+        <input list="array_locations" class="form-control m-auto w-50" type="text" name="search_add" placeholder="Search location" />
+        <datalist id="array_locations">
+        </datalist>
+        </form>
+    </header>
+    <ul class="list-group locations mx-auto w-50 mb-5" id="locations">
+        <li class="list-group-item d-flex justify-content-between align-items-center first-one">
+            <span>Current Location</span>
+        </li>
+    </ul>
+</div>
 
 
 <script src="script.js"></script>
