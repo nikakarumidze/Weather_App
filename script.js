@@ -54,6 +54,7 @@ function geoLocationCoords (position) {
 const currentLocation = () => {
     fetch('http://ip-api.com/json?fields=8192')
         .catch(e => {
+            console.log(e);
             navigator.geolocation.getCurrentPosition(geoLocationCoords)
         })
     .then(response => response.json())
