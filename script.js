@@ -222,7 +222,7 @@ locations.addEventListener('click', e => {
                         secondCarousel.children.item(carouselNum-2).classList.add('active');
                     }
                 }
-                secondCarousel.children.item(removingElement.getAttribute('data-bs-slide-to')-1).remove();
+                secondCarousel.children.item(removingElement.getAttribute('data-bs-slide-to')).remove();
 
                 let removeTarget = document.querySelector('#carouselFirst .carousel-indicators .active'); 
                 let targetButton = document.querySelector('#carouselFirst .carousel-indicators');
