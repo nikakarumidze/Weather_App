@@ -78,7 +78,9 @@ function updateUI (data, location, active, activeTrue) {
     let metricScore;
     if (localStorage.getItem("metric") == "F") {
         metricScore = data[0].Temperature.Imperial.Value
-    }else {metricScore = data[0].Temperature.Metric.Value}
+    }else {
+        metricScore = data[0].Temperature.Metric.Value
+    }
     
     let textColor = "text-dark";
     if (window.localStorage.getItem("theme") === "dark") {
@@ -336,12 +338,12 @@ const secondCarousel = document.querySelector("#carousel_second_content");
 function dailyUI (data, active) {
     let metricScore2;
     let metricScore3;
-    if (localStorage.getItem("metric") == "C") {
-        metricScore2 = Math.round((data.DailyForecasts[0].Temperature.Minimum.Value-32)*5/9 * 10) / 10;
-        metricScore3 = Math.round((data.DailyForecasts[0].Temperature.Maximum.Value-32)*5/9 * 10) / 10;
-    }else {
+    if (localStorage.getItem("metric") == "F") {
         metricScore2 = data.DailyForecasts[0].Temperature.Minimum.Value;
         metricScore3 = data.DailyForecasts[0].Temperature.Maximum.Value;
+    }else {
+        metricScore2 = Math.round((data.DailyForecasts[0].Temperature.Minimum.Value-32)*5/9 * 10) / 10;
+        metricScore3 = Math.round((data.DailyForecasts[0].Temperature.Maximum.Value-32)*5/9 * 10) / 10;
     };
 
     let createDiv = document.createElement("div");
