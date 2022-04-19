@@ -27,3 +27,4 @@ const get1000City = () => {
     .then(data => console.log(data))
     .catch(err => console.log(err))
 }
+get1000City();
