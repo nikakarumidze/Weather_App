@@ -8,13 +8,22 @@ const addOptions = element => {
 };
 
 // Get Cities
-function getAllCities() {
-    fetch("../top-1000-cities.json")
-    .then(e => e.json())
-    .then(data => {
-        for (let x of data) {
-            addOptions(x.name);
-        }
-    });
+// function getAllCities() {
+//     fetch("top-1000-cities.json")
+//     .then(e => e.json())
+//     .catch(err => console.log(err))
+//     .then(data => {
+//         for (let x of data) {
+//             addOptions(x.name);
+//         }
+//         console.log(data);
+//     });
+// }
+// getAllCities();
+
+
+const get1000City = () => {
+    fetch('./top-1000-cities.json')
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
 }
-getAllCities();
