@@ -4,7 +4,7 @@
   "description": "Weather_App",
   "main": "/Javascript/before",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "allfiles": "npx babel Javascript/before/ -w -d Javascript/after/"
   },
   "repository": {
     "type": "git",
