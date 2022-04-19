@@ -24,7 +24,12 @@ const addOptions = element => {
 
 const get1000City = () => {
     fetch('./top-1000-cities.json')
-    .then(data => console.log(data))
+    .then(e => e.json())
+    .then(data => {
+        for (let x of data) {
+            addOptions(x.name);
+        }
+    })
     .catch(err => console.log(err))
 }
 get1000City();
