@@ -1,7 +1,7 @@
 // Current Location API
 const currentLocation = () => {
     fetch('http://ip-api.com/json?fields=8192')
-        .catch(e => {
+        .catch(() => {
             navigator.geolocation.getCurrentPosition(geoLocationCoords)
         })
     .then(response => response.json())
@@ -22,7 +22,7 @@ const currentLocation = () => {
 };
 
 // in case http request is blocked, we use geolocation API
-function geoLocationCoords (position) {
+const geoLocationCoords = position => {
     fetch(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${weatherKey}&q=${position.coords.latitude}, ${position.coords.longitude}`)
     .then(e => e.json())
     .then( data => {
